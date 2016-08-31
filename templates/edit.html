@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Dashboard with Off-canvas Sidebar</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="/static/css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Opportunity Tracker</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><img src="/static/img/hk-swire.gif" alt="Swire" width="17%" style="float: right;" onclick="window.location.href = '/admin';"></li>
+          </ul>
+        </div>
+      </div>
+</nav>
+
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+          
+		  <h1 class="page-header">
+            Edit
+          </h1>
+          <div class="MyForm">
+            <form id="update" action="/UpdateElement" method="post">
+                <h3>{{info[0]}}</h3>
+                <h4>ID: {{info[1][0]}}</h4>
+                <br>
+               <input type="hidden" name="table" value="{{info[0]}}">
+               <input type="hidden" name="id" value="{{info[1][0]}}">
+              <div class="form-group">
+                <label for="location">Location:</label>
+                <input type="text" class="form-control" name="location" value="{{info[1][1]}}">
+              </div>
+              <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" class="form-control" name="department" value="{{info[1][2]}}">
+              </div>
+              <div class="form-group">
+                <label for="assigned">Assigned:</label>
+                <input type="text" class="form-control" name="assigned" value="{{info[1][3]}}">
+              </div>
+              <div class="form-group">
+                  <label for="priority">Priority:</label>
+                <select name="priority">
+                  <option value="4 - Low" {%if info[1][4] == "4 - Low"%}selected="selected"{%endif%}>Low</option>
+                  <option value="3 - Medium" {%if info[1][4] == "3 - Medium"%}selected="selected"{%endif%}>Medium</option>
+                  <option value="2 - High" {%if info[1][4] == "2 - High"%}selected="selected"{%endif%}>High</option>
+                  <option value="1 - Very High" {%if info[1][4] == "1 - Very High"%}selected="selected"{%endif%}>Very High</option>
+                </select>
+              </div>
+              <div class="form-group">
+                  <label for="status">Status:</label>
+                <select name="status">
+                  <option value="1 - New" {%if info[1][5] == "1 - New"%}selected="selected"{%endif%}>New</option>
+                  <option value="2 - In Progress" {%if info[1][5] == "2 - In Progress"%}selected="selected"{%endif%}>In Progress</option>
+                  <option value="3 - Pending" {%if info[1][5] == "3 - Pending"%}selected="selected"{%endif%}>Pending</option>
+                  <option value="4 - Resolved" {%if info[1][5] == "4 - Resolved"%}selected="selected"{%endif%}>Resolved</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="comments">Comments:</label><br>
+                <textarea class="form-control" name="comments" form="update">{{info[1][6]}}</textarea>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+
+	</div>
+</div><!--/.container-->
+
+
+
+<footer>
+  <p class="pull-right"><img src="/static/img/swire.jpg" alt="Swire"></p>
+</footer>
+        
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		<script src="/static/js/scripts.js"></script>
+		<script src="/static/js/myscript.js"></script>
+	</body>
+</html>
